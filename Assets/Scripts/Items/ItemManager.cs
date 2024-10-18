@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [SerializeField] private GameObject healItemPrefab;
-
     [SerializeField] ItemProbability[] itemPercentage;
 
 
@@ -23,10 +21,7 @@ public class ItemManager : MonoBehaviour
     {
         StartCoroutine(SpawnItem());
     }
-    void Update()
-    {
-        
-    }
+    
 
     private void OnValidate()
     {
@@ -79,5 +74,11 @@ public class ItemManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void UseItem(Item item, GameObject player)
+    {
+        // 아이템이 반환한 코루틴을 실행
+        StartCoroutine(item.ItemEffect(player));
     }
 }

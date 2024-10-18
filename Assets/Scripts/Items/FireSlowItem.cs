@@ -9,9 +9,9 @@ public class FireSlowItem : Item
 
     private float fireSlowDuration = 3.0f;
 
-    public override void ItemEffect(GameObject player)
+    public override IEnumerator ItemEffect(GameObject player)
     {
-        StartCoroutine(FireSlow());
+        return FireSlow();
     }
 
     IEnumerator FireSlow()

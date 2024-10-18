@@ -4,28 +4,41 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour
 {
+    [SerializeField] private ItemManager itemManager;
     private GameObject useItemPlayer;
 
-    public abstract void ItemEffect(GameObject player);
+    private void Start()
+    {
+        itemManager = FindObjectOfType<ItemManager>();
+    }
 
-    // Start is called before the first frame update
-    
-    
+    public abstract IEnumerator ItemEffect(GameObject player);
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Destroy(this.gameObject);
+            Rigidbody2D rigidbody2D = GetComponent<Rigidbody2D>();
+
+            rigidbody2D.gravityScale = 0f;
+            rigidbody2D.velocity = Vector3.zero;
+
+            Destroy(this.gameObject, 1f);
         }
 
         if (collision.gameObject.CompareTag("Player"))
         {
             useItemPlayer = collision.gameObject;
 
-            ItemEffect(useItemPlayer);
+            if (collision == null)
+                return;
 
-            Destroy(this.gameObject);
+            itemManager.UseItem(this, useItemPlayer);
+
+            //ItemEffect(useItemPlayer);
+
+            Destroy(this.gameObject, 0.1f);
         }
     }
 }
