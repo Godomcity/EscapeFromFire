@@ -6,6 +6,7 @@ using System;
 
 public class CollidingPlayerEventController : MonoBehaviour
 {
+    [SerializeField] private AudioClip hitClip;
     private Rigidbody2D movementRigidbody2D;
     private HealthSystem healthSystem;
 
@@ -13,9 +14,12 @@ public class CollidingPlayerEventController : MonoBehaviour
 
     public event Action OnTapMonsterJumpEvent;
 
+    private AudioSource audioSource;
+
     private void Awake()
     {
         movementRigidbody2D = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -43,6 +47,7 @@ public class CollidingPlayerEventController : MonoBehaviour
                 return;
             }
 
+            audioSource.PlayOneShot(hitClip);
             healthSystem.ChangeHealth(-1f);
         }
     }

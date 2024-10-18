@@ -56,8 +56,16 @@ public class SideViewMovement : MonoBehaviour
 
     private void Move(Vector2 _direction)
     {
-        audioSource.clip = moveClip;
-        audioSource.Play();
+        if (_direction.x != 0)
+        {
+            audioSource.clip = moveClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.Stop();
+        }
 
         direction = _direction;
 
@@ -71,8 +79,7 @@ public class SideViewMovement : MonoBehaviour
         if (false == isGround)
             return;
 
-        audioSource.clip = jumpClip;
-        audioSource.Play();
+        audioSource.PlayOneShot(jumpClip);
 
         movementRigidbody2D.AddForce(Vector2.up * statHandler.CurrentStat.jumpPower, ForceMode2D.Impulse);
 
