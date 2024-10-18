@@ -26,10 +26,7 @@ public abstract class Balls : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        {
-            audioSource.volume = 0.1f;
-            audioSource.clip = groundClip;
-            audioSource.Play();
+        {          
             animator.SetBool("isDestroy", true);
             Destroy(this.gameObject, 1f);
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
