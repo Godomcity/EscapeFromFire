@@ -36,8 +36,6 @@ public abstract class Item : MonoBehaviour
 
             itemManager.UseItem(this, useItemPlayer);
 
-            //ItemEffect(useItemPlayer);
-
             Destroy(this.gameObject, 0.1f);
         }
     }
