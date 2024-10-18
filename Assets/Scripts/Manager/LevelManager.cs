@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
     private float easy_Spawn_Speed = 1f;
     private float normal_Spawn_Speed = 0.8f;
-    private float hard_Spawn_Spawn_Speed = 0.5f;
+    private float hard_Spawn_Speed = 0.5f;
 
     public static bool isEasy = true;
     public static bool isNormal = false;
@@ -170,13 +170,13 @@ public class LevelManager : MonoBehaviour
                     MakeMonsterFireBallTimer = 0;
                 }
                 
-                hard_Spawn_Spawn_Speed = hard_Spawn_Spawn_Speed / 2f;
-                if (hard_Spawn_Spawn_Speed <= 0.125f)
+                hard_Spawn_Speed = hard_Spawn_Speed / 2f;
+                if (hard_Spawn_Speed <= 0.125f)
                 {
-                    hard_Spawn_Spawn_Speed = 0.125f;
+                    hard_Spawn_Speed = 0.125f;
                 }
-            }            
-            yield return new WaitForSeconds(hard_Spawn_Spawn_Speed);
+            }
+            yield return new WaitForSeconds(hard_Spawn_Speed);
         }
     }
 }

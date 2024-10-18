@@ -71,8 +71,7 @@ public class SelectController : MonoBehaviour
 }
 public class characterSkinChoose : MonoBehaviour
 {
-    public void 
-
+  
 }
 public class PlayModeSelectController : SelectController
 {
