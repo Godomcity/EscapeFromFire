@@ -47,29 +47,32 @@ public class HealthSystem : MonoBehaviour
     }
 
 
-    public void ChangeHealth(float change)
+    public bool ChangeHealth(float change)
     {
+        if(change > 0)
+        {
+            CurrentHealth += change;
+            CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+            OnHeal?.Invoke();
+
+            return true;
+        }
+
         if (false == CheackHealthChangeDelayEnd())
-            return;// false;
+            return false;
 
         CurrentHealth += change;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+
+        OnDamage?.Invoke();
+        IsAttacked = true;
 
         timeSinceLastChange = 0f;
 
         if(CurrentHealth == 0)
             OnDeath?.Invoke();
 
-        if(change > 0)
-            OnHeal?.Invoke();
-
-        if(change < 0)
-        {
-            OnDamage?.Invoke();
-            IsAttacked = true;
-        }
-
-        return;// true;
+        return true;
     }
 
     private bool CheackHealthChangeDelayEnd()
