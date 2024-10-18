@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
     private float normal_Spewn_Speed = 0.8f;
     private float hard_Spewn_Spawn_Speed = 0.5f;
 
-    public static bool isEasy = false;
+    public static bool isEasy = true;
     public static bool isNormal = false;
     public static bool isHard = false;
 
