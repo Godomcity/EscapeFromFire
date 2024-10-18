@@ -404,7 +404,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5297662a47f8b14593b7e46d68662e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healItemPrefab: {fileID: 7090960006523054240, guid: 9021d185fd2c8214791e1b3877cf6740, type: 3}
+  healItemPrefab: {fileID: 7090960006523054240, guid: 4fa5d31663fff8041aa742497909b6e7, type: 3}
+  healItem: 0.44
+  slowFireItem: 0
+  itemPercentage:
+  - itemName: HealItem
+    itemPercent: 0.345
+  - itemName: FireSlowItem
+    itemPercent: 0.254
 --- !u!1 &1669102438
 GameObject:
   m_ObjectHideFlags: 0

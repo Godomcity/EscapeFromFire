@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1436618648371467321}
   - component: {fileID: 891713712904832614}
   - component: {fileID: 6278813440884885135}
-  - component: {fileID: 6777656986633933839}
+  - component: {fileID: -9110554320383582467}
   m_Layer: 0
   m_Name: FireSlowItem
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dd86867da9990584a9dc706d08a29150, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b59a71db9878ce648a8338095027dce2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.1, y: 0.11}
+    oldSize: {x: 1.4285715, y: 1.5714285}
     newSize: {x: 4.39, y: 4.39}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6777656986633933839
+--- !u!114 &-9110554320383582467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +168,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7090960006523054240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4964a538df8e92499676d72f7e57375, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cf66a7b34c0f0a44b6f3902505cc432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePrefab: {fileID: 4088571098289878915, guid: 3a2fea0ddb510ee4e8e55e8df02e3d35, type: 3}
+  smallFirePrefab: {fileID: 1552661078702467686, guid: 2e92d36a30ebe274895f54c1e66c13b5, type: 3}
