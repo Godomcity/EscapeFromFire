@@ -33,13 +33,21 @@ public class ItemManager : MonoBehaviour
             totalPercentage += item.itemPercent;
         }
 
-        if (totalPercentage > 1.0f)
+        if (totalPercentage != 1.0f)
         {
             for (int i = 0; i < itemPercentage.Length; i++)
             {
                 itemPercentage[i].itemPercent *= (1 / totalPercentage);
             }
         }
+
+        /*if (totalPercentage < 1.0f)
+        {
+            for (int i = 0; i < itemPercentage.Length; i++)
+            {
+                itemPercentage[i].itemPercent *= (1 / totalPercentage);
+            }
+        }*/
     }
 
     IEnumerator SpawnItem()
