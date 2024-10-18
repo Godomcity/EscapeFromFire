@@ -11,6 +11,8 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
+    
+    public FadeController fadeController;
 
     [SerializeField] private GameObject fireBall;
     [SerializeField] private GameObject smallFireBall;
@@ -44,11 +46,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        fadeController.FadeOut();
         LevelFireSpawn();
-
-        //InvokeRepeating("MakeFireBall", 0.5f, 1f);
-        //InvokeRepeating("MakeSmallFireBall", 0.5f, 1f);
-        //InvokeRepeating("MakeMonsterFireBall", 0.5f, 1f);
     }
 
     private void Update()
