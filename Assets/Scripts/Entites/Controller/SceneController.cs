@@ -25,6 +25,7 @@ public class SceneController : MonoBehaviour
         AudioManager.instance.audioSource.clip = easyClip;
         AudioManager.instance.audioSource.Play();
     }
+    
     public void callNolamlMainScene()
     {
         StartCoroutine(ButtonSound());
@@ -32,6 +33,7 @@ public class SceneController : MonoBehaviour
         AudioManager.instance.audioSource.clip = normalClip;
         AudioManager.instance.audioSource.Play();  
     }
+
     public void callHardMainScene()
     {
         StartCoroutine(ButtonSound());
@@ -39,6 +41,7 @@ public class SceneController : MonoBehaviour
         AudioManager.instance.audioSource.clip = hardClip;
         AudioManager.instance.audioSource.Play();
     }
+
     public void callTitleScene()
     {
         SceneManager.LoadScene("TitleScene");

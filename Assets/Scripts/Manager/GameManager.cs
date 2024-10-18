@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public SelectDataHandler SelectDataHandler { get; private set; }
+    public SelectPlayerHandler SelectPlayerHandler { get; private set; }
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
 
-            SelectDataHandler = GetComponent<SelectDataHandler>();
+            SelectPlayerHandler = GetComponent<SelectPlayerHandler>();
 
             DontDestroyOnLoad(gameObject);
         }
