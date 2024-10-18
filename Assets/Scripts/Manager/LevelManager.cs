@@ -11,6 +11,8 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
+    
+    public FadeController fadeController;
 
     [SerializeField] private GameObject fireBall;
     [SerializeField] private GameObject smallFireBall;
@@ -44,11 +46,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        fadeController.FadeOut();
         LevelFireSpawn();
-
-        //InvokeRepeating("MakeFireBall", 0.5f, 1f);
-        //InvokeRepeating("MakeSmallFireBall", 0.5f, 1f);
-        //InvokeRepeating("MakeMonsterFireBall", 0.5f, 1f);
     }
 
     private void Update()
@@ -150,6 +149,10 @@ public class LevelManager : MonoBehaviour
             if (time > second_LevelUp_Time)
             {
                 normal_Spawn_Speed = normal_Spawn_Speed / 2f;
+                if (normal_Spawn_Speed <= 0.8f)
+                {
+                    normal_Spawn_Speed = 0.8f;
+                }
             }
 
             yield return new WaitForSeconds(normal_Spawn_Speed);
@@ -178,6 +181,10 @@ public class LevelManager : MonoBehaviour
             if (time > second_LevelUp_Time)
             {
                 hard_Spawn_Speed = hard_Spawn_Speed / 2f;
+                if (hard_Spawn_Speed <= 0.4f)
+                {
+                    hard_Spawn_Speed = 0.4f;
+                }
             }
 
             yield return new WaitForSeconds(hard_Spawn_Speed);
