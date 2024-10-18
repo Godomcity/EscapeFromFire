@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using System.Timers;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,25 +16,25 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float smallFireBall_Speed = 0.05f;
     [SerializeField] private float monsterFireBall_Speed = 1f;
 
-    private float esay_Spawn_Speed = 1f;
-    private float normal_Spewn_Speed = 0.8f;
-    private float hard_Spewn_Spawn_Speed = 0.5f;
+    private float easy_Spawn_Speed = 1f;
+    private float normal_Spawn_Speed = 0.8f;
+    private float hard_Spawn_Spawn_Speed = 0.5f;
 
     public static bool isEasy = true;
     public static bool isNormal = false;
-    public static bool isHard = false;
+    public static bool isHard = true;
 
     private float first_LevelUp_Time = 15f;
-    private float Second_LevelUp_Time = 30f;
+    private float second_LevelUp_Time = 30f;
     private float time = 0;
-
+    private float Make5Sec;
+    private float MakeMonsterFireBallTimer;
     private void Awake()
     {
         if(Instance == null)
         {
             Instance = this;
-        }
-       
+        }       
     }
 
     void Start()
@@ -57,7 +59,7 @@ public class LevelManager : MonoBehaviour
         }
         else if (isNormal)
         {
-            StartCoroutine(NromalLevel());
+            StartCoroutine(NormalLevel());
         }
         else if (isHard)
         {
@@ -104,22 +106,22 @@ public class LevelManager : MonoBehaviour
                 MakeFireBall();
             }
 
-            if (time > Second_LevelUp_Time)
+            if (time > second_LevelUp_Time)
             {
                 MakeSmallFireBall();
                 MakeFireBall();
-                esay_Spawn_Speed = esay_Spawn_Speed / 2f;
-                if (esay_Spawn_Speed <= 0.25f)
+                easy_Spawn_Speed = easy_Spawn_Speed / 2f;
+                if (easy_Spawn_Speed <= 0.25f)
                 {
-                    esay_Spawn_Speed = 0.25f;
+                    easy_Spawn_Speed = 0.25f;
                 }
                 time = 0;
             }
-            yield return new WaitForSeconds(esay_Spawn_Speed);
+            yield return new WaitForSeconds(easy_Spawn_Speed);
         }
     }
 
-    IEnumerator NromalLevel()
+    IEnumerator NormalLevel()
     {
         while (isNormal)
         {
@@ -132,48 +134,49 @@ public class LevelManager : MonoBehaviour
                 MakeFireBall();
             }
 
-            if (time > Second_LevelUp_Time)
+            if (time > second_LevelUp_Time)
             {
-                MakeSmallFireBall();
-                MakeFireBall();
                 MakeMonsterFireBall();
-                normal_Spewn_Speed = normal_Spewn_Speed / 2f;
-                if (normal_Spewn_Speed <= 0.2f)
+                normal_Spawn_Speed = normal_Spawn_Speed / 2f;
+                if (normal_Spawn_Speed <= 0.2f)
                 {
-                    normal_Spewn_Speed = 0.2f;
+                    normal_Spawn_Speed = 0.2f;
                 }
-                time = 0;
             }
-            yield return new WaitForSeconds(normal_Spewn_Speed);
+            time = 0f;
+            yield return new WaitForSeconds(normal_Spawn_Speed);
         }
     }
 
     IEnumerator HardLevel()
     {
         while (isHard)
-        {
+        {            
             MakeSmallFireBall();
             MakeFireBall();
+            MakeMonsterFireBallTimer = time;
 
             if (time > first_LevelUp_Time)
             {
-                MakeSmallFireBall();
                 MakeFireBall();
+                MakeSmallFireBall();
             }
 
-            if (time > Second_LevelUp_Time)
+            if (time > second_LevelUp_Time)
             {
-                MakeSmallFireBall();
-                MakeFireBall();
-                MakeMonsterFireBall();
-                hard_Spewn_Spawn_Speed = hard_Spewn_Spawn_Speed / 2f;
-                if (hard_Spewn_Spawn_Speed <= 0.125f)
+                if(MakeMonsterFireBallTimer >= 5f)
                 {
-                    hard_Spewn_Spawn_Speed = 0.125f;
+                    MakeMonsterFireBall();
+                    MakeMonsterFireBallTimer = 0;
                 }
-                time = 0;
-            }
-            yield return new WaitForSeconds(hard_Spewn_Spawn_Speed);
+                
+                hard_Spawn_Spawn_Speed = hard_Spawn_Spawn_Speed / 2f;
+                if (hard_Spawn_Spawn_Speed <= 0.125f)
+                {
+                    hard_Spawn_Spawn_Speed = 0.125f;
+                }
+            }            
+            yield return new WaitForSeconds(hard_Spawn_Spawn_Speed);
         }
     }
 }
