@@ -408,10 +408,10 @@ MonoBehaviour:
   healItem: 0.44
   slowFireItem: 0
   itemPercentage:
-  - itemName: HealItem
-    itemPercent: 0.345
-  - itemName: FireSlowItem
-    itemPercent: 0.254
+  - item: {fileID: 7090960006523054240, guid: 9021d185fd2c8214791e1b3877cf6740, type: 3}
+    itemPercent: 0.315
+  - item: {fileID: 7090960006523054240, guid: 4fa5d31663fff8041aa742497909b6e7, type: 3}
+    itemPercent: 0.31910953
 --- !u!1 &1669102438
 GameObject:
   m_ObjectHideFlags: 0

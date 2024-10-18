@@ -6,16 +6,13 @@ public class ItemManager : MonoBehaviour
 {
     [SerializeField] private GameObject healItemPrefab;
 
-    [Range(0.0f, 1.0f)] public float healItem;
-    [Range(0.0f, 1.0f)] public float slowFireItem;
-
     [SerializeField] ItemProbability[] itemPercentage;
 
-    [System.Serializable]
 
+    [System.Serializable]
     public struct ItemProbability
     {
-        public string itemName;
+        [SerializeField] public GameObject item;
         [Range(0f, 1f)] public float itemPercent;
     }
 
@@ -26,8 +23,6 @@ public class ItemManager : MonoBehaviour
     {
         StartCoroutine(SpawnItem());
     }
-
-    // Update is called once per frame
     void Update()
     {
         
@@ -36,7 +31,6 @@ public class ItemManager : MonoBehaviour
     private void OnValidate()
     {
         float totalPercentage = 0f;
-        float overPercent;
 
         foreach (var item in itemPercentage)
         {
@@ -57,16 +51,33 @@ public class ItemManager : MonoBehaviour
     {
         while (true)
         {
-            GameObject originalObject = healItemPrefab;
+            GameObject spawnItem = GetRandomItemBasedOnProbability();
+
             Vector3 spawnPosition = new Vector3(Random.Range(-8.5f, 8.5f), 5.6f, 0);
             Quaternion spawnRotation = Quaternion.identity;
-            GameObject clone = Instantiate(originalObject, spawnPosition, spawnRotation);
 
+            Instantiate(spawnItem, spawnPosition, spawnRotation);
 
             yield return new WaitForSeconds(itemSpawnDelay);
         }
 
     }
 
+    private GameObject GetRandomItemBasedOnProbability()
+    {
+        float randomValue = Random.Range(0f, 1f);
+        float cumulativeProbability = 0f;
 
+        foreach (var item in itemPercentage)
+        {
+            cumulativeProbability += item.itemPercent;
+
+            if (randomValue <= cumulativeProbability)
+            {
+                return item.item;
+            }
+        }
+
+        return null;
+    }
 }
