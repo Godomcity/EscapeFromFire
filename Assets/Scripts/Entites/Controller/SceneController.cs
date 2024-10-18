@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public FadeController fadeController;
+
     AudioSource audioSource;
 
     [SerializeField] AudioClip easyClip;
@@ -20,26 +22,19 @@ public class SceneController : MonoBehaviour
 
     public void callEasyMainScene()
     {
-        StartCoroutine(ButtonSound());
         LevelManager.isEasy = true;
-        AudioManager.instance.audioSource.clip = easyClip;
-        AudioManager.instance.audioSource.Play();
+        StartCoroutine(ButtonSound());
     }
-    
     public void callNolamlMainScene()
     {
+        LevelManager.isNormal = true;
         StartCoroutine(ButtonSound());
-        LevelManager.isNormal=true;
-        AudioManager.instance.audioSource.clip = normalClip;
-        AudioManager.instance.audioSource.Play();  
     }
 
     public void callHardMainScene()
     {
+        LevelManager.isHard = true;
         StartCoroutine(ButtonSound());
-        LevelManager.isHard=true;
-        AudioManager.instance.audioSource.clip = hardClip;
-        AudioManager.instance.audioSource.Play();
     }
 
     public void callTitleScene()
@@ -50,7 +45,23 @@ public class SceneController : MonoBehaviour
     IEnumerator ButtonSound()
     {
         audioSource.PlayOneShot(button_Click_Clip);
-        yield return new WaitForSeconds(0.8f);
+        fadeController.FadeIn();
+        yield return new WaitForSeconds(1.8f);
+
+        if(LevelManager.isEasy == true)
+        {
+            AudioManager.instance.audioSource.clip = easyClip;
+        }
+        else if (LevelManager.isNormal == true)
+        {
+            AudioManager.instance.audioSource.clip = normalClip;
+        }
+        else
+        {
+            AudioManager.instance.audioSource.clip = hardClip;
+        }
+
+        AudioManager.instance.audioSource.Play();
         SceneManager.LoadScene("MainScene");
     }
 }
