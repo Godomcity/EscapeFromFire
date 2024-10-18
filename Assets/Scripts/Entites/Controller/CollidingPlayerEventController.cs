@@ -26,14 +26,19 @@ public class CollidingPlayerEventController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Monster"))
+        CollisionEnterCheckMonster(collision);
+    }
+
+    private void CollisionEnterCheckMonster(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Monster"))
         {
             bool isFalling = movementRigidbody2D.velocity.y < 0 ? true : false;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, LayerMask.NameToLayer("Monster"));
 
-            if(true == isFalling && 
-                hit.collider != null && 
+            if (true == isFalling &&
+                hit.collider != null &&
                     layerMaskMonster == (layerMaskMonster | (1 << hit.collider.gameObject.layer)))
             {
                 collision.gameObject.GetComponent<Monster>().MonsterDamaged();
