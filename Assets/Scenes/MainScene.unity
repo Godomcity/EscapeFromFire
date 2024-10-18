@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 478333659}
   - component: {fileID: 478333658}
   m_Layer: 0
-  m_Name: GameManger
+  m_Name: BackGroundHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
