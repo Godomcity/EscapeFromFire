@@ -7,17 +7,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    public SelectPlayerHandler SelectPlayerHandler { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
-        else
+        else if (Instance = null)
         {
             Instance = this;
+
+            SelectPlayerHandler = GetComponent<SelectPlayerHandler>();
+
+            DontDestroyOnLoad(gameObject);
         }
     }
-
-    
 }
