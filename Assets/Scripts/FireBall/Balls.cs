@@ -10,18 +10,21 @@ public abstract class Balls : MonoBehaviour
     Animator animator;
     Rigidbody2D rgbd;
     HealthSystem healthSystem;
+    AudioSource audioSource;
 
     protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         rgbd = GetComponent<Rigidbody2D>();
-        healthSystem = GetComponent<HealthSystem>();    
+        healthSystem = GetComponent<HealthSystem>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            audioSource.Play();
             animator.SetBool("isDestroy", true);
             Destroy(this.gameObject, 1f);
             gameObject.GetComponent<BoxCollider2D>().enabled = false;

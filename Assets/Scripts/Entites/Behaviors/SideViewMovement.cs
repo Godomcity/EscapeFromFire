@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class SideViewMovement : MonoBehaviour
 {
+    [SerializeField] private AudioClip moveClip;
+    [SerializeField] private AudioClip jumpClip;
+
     private Vector2 direction = Vector2.zero;
 
     private SideVeiwController controller;
@@ -14,6 +17,8 @@ public class SideViewMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private CharacterStatsHandler statHandler;
     private HealthSystem healthSystem;
+
+    private AudioSource audioSource;
 
     private bool isGround = true;
 
@@ -27,6 +32,7 @@ public class SideViewMovement : MonoBehaviour
         statHandler =  GetComponent<CharacterStatsHandler>();
         healthSystem = GetComponent<HealthSystem>();
         collidingPlayerEventController = GetComponent<CollidingPlayerEventController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -50,6 +56,9 @@ public class SideViewMovement : MonoBehaviour
 
     private void Move(Vector2 _direction)
     {
+        audioSource.clip = moveClip;
+        audioSource.Play();
+
         direction = _direction;
 
         bool isFilpX = controller.direction.x < 0;
@@ -61,6 +70,9 @@ public class SideViewMovement : MonoBehaviour
     {
         if (false == isGround)
             return;
+
+        audioSource.clip = jumpClip;
+        audioSource.Play();
 
         movementRigidbody2D.AddForce(Vector2.up * statHandler.CurrentStat.jumpPower, ForceMode2D.Impulse);
 
