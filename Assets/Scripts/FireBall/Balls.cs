@@ -19,7 +19,7 @@ public abstract class Balls : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         rgbd = GetComponent<Rigidbody2D>();
-        healthSystem = GetComponent<HealthSystem>();
+        healthSystem = GetComponent<HealthSystem>();    
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -27,6 +27,7 @@ public abstract class Balls : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            audioSource.volume = 0.1f;
             audioSource.clip = groundClip;
             audioSource.Play();
             animator.SetBool("isDestroy", true);
@@ -35,6 +36,18 @@ public abstract class Balls : MonoBehaviour
             rgbd.constraints = RigidbodyConstraints2D.FreezePositionY;
             OnTriggerEffect(collision);
         }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            audioSource.volume = 0.5f;
+            audioSource.clip = playerHitClip;
+            audioSource.Play();
+            animator.SetBool("isDestroy", true);
+            Destroy(this.gameObject, 1f);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            rgbd.constraints = RigidbodyConstraints2D.FreezePositionY;
+            collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-1);
+        }
     }
 
     protected abstract void OnTriggerEffect(Collider2D collision);
@@ -42,11 +55,6 @@ public abstract class Balls : MonoBehaviour
     //플레이어가 맞을 때 체력의 변화
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            audioSource.clip = playerHitClip;
-            audioSource.Play();
-            collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-1);
-        }
+       
     }   
 }

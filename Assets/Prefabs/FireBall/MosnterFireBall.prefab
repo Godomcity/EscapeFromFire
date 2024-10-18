@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3294418579a11584eb9e7319652c2e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundClip: {fileID: 8300000, guid: 3f692f0823b3f45afb000d656f137d55, type: 3}
+  playerHitClip: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
   monsterPrefabs:
   - {fileID: 7664814198424431288, guid: f103cc80fa7ce1e4b9f011c54a54d3b4, type: 3}
   - {fileID: 747033247017102367, guid: 40a4fc129e501ca458835c78f13307ba, type: 3}
