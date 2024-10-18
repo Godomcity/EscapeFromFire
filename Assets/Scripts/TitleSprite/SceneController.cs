@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
         StartCoroutine(ButtonSound());
         LevelManager.isNormal=true;
         AudioManager.instance.audioSource.clip = normalClip;
-        AudioManager.instance.audioSource.Play();  
+        AudioManager.instance.audioSource.Play();
     }
     public void callHardMainScene()
     {
@@ -50,4 +50,15 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
         SceneManager.LoadScene("MainScene");
     }
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBPLAYER
+            Application.OpenURL(https://spartacodingclub.kr/);
+        #else
+            Application.Quit();
+        #endif
+    }
+
 }

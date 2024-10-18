@@ -8,20 +8,24 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public SelectPlayerHandler SelectPlayerHandler { get; private set; }
+    public bool PlayerMode = true;  //true는 싱글, false는 멀티
 
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
+            Debug.Log("여기야?");
             Destroy(this);
         }
         else if (Instance = null)
         {
+            Debug.Log("여긴가?");
             Instance = this;
 
             SelectPlayerHandler = GetComponent<SelectPlayerHandler>();
 
             DontDestroyOnLoad(gameObject);
         }
+        Debug.Log(GameManager.Instance);
     }
 }
