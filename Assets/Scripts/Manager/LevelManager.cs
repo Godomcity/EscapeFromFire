@@ -150,6 +150,10 @@ public class LevelManager : MonoBehaviour
             if (time > second_LevelUp_Time)
             {
                 normal_Spawn_Speed = normal_Spawn_Speed / 2f;
+                if (normal_Spawn_Speed <= 0.8f)
+                {
+                    normal_Spawn_Speed = 0.8f;
+                }
             }
 
             yield return new WaitForSeconds(normal_Spawn_Speed);
@@ -178,6 +182,10 @@ public class LevelManager : MonoBehaviour
             if (time > second_LevelUp_Time)
             {
                 hard_Spawn_Speed = hard_Spawn_Speed / 2f;
+                if (hard_Spawn_Speed <= 0.4f)
+                {
+                    hard_Spawn_Speed = 0.4f;
+                }
             }
 
             yield return new WaitForSeconds(hard_Spawn_Speed);
