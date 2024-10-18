@@ -21,20 +21,23 @@ public class SceneController : MonoBehaviour
     public void callEasyMainScene()
     {
         StartCoroutine(ButtonSound());
+        LevelManager.isEasy = true;
+        AudioManager.instance.audioSource.clip = easyClip;
+        AudioManager.instance.audioSource.Play();
     }
     public void callNolamlMainScene()
     {
+        StartCoroutine(ButtonSound());
         LevelManager.isNormal=true;
         AudioManager.instance.audioSource.clip = normalClip;
-        AudioManager.instance.audioSource.Play();
-        SceneManager.LoadScene("MainScene");
+        AudioManager.instance.audioSource.Play();  
     }
     public void callHardMainScene()
     {
+        StartCoroutine(ButtonSound());
         LevelManager.isHard=true;
         AudioManager.instance.audioSource.clip = hardClip;
         AudioManager.instance.audioSource.Play();
-        SceneManager.LoadScene("MainScene");
     }
     public void callTitleScene()
     {
@@ -44,10 +47,7 @@ public class SceneController : MonoBehaviour
     IEnumerator ButtonSound()
     {
         audioSource.PlayOneShot(button_Click_Clip);
-        yield return new WaitForSeconds(audioSource.clip.length);
-        LevelManager.isEasy = true;
-        AudioManager.instance.audioSource.clip = easyClip;
-        AudioManager.instance.audioSource.Play();
+        yield return new WaitForSeconds(0.8f);
         SceneManager.LoadScene("MainScene");
     }
 }
