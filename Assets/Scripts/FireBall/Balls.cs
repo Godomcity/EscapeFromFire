@@ -28,6 +28,11 @@ public abstract class Balls : MonoBehaviour
             rgbd.constraints = RigidbodyConstraints2D.FreezePositionY;
             OnTriggerEffect(collision);
         }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-1);
+        }
     }
 
     protected abstract void OnTriggerEffect(Collider2D collision);
@@ -35,9 +40,6 @@ public abstract class Balls : MonoBehaviour
     //플레이어가 맞을 때 체력의 변화
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-1);
-        }
+       
     }   
 }

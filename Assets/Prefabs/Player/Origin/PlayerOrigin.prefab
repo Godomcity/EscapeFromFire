@@ -303,7 +303,7 @@ MonoBehaviour:
     statsChangeType: 2
     maxHealth: 3
     speed: 1
-    jumpPower: 0
+    jumpPower: 25
   statModifiers: []
 --- !u!114 &7438352033058018857
 MonoBehaviour:
