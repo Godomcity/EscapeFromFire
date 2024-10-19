@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1158343257351845830, guid: 478094da88e08114fbe4432f8e31f4f4, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 95932cf13b1a91b4c8d0845d298aceb3, type: 2}
     - target: {fileID: 3331206790436552643, guid: 478094da88e08114fbe4432f8e31f4f4, type: 3}
       propertyPath: m_Name
       value: PlayerPinkVariant
