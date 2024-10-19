@@ -279,6 +279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.5
+<<<<<<< Updated upstream
+=======
+  numOfHeartTxt: {fileID: 7931589706694923059, guid: d43d86e3d4700af46a598754a9f49b1c, type: 3}
+>>>>>>> Stashed changes
 --- !u!114 &7047087580266613413
 MonoBehaviour:
   m_ObjectHideFlags: 0

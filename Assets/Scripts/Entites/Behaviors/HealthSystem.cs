@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Security.Cryptography;
+<<<<<<< Updated upstream
+=======
+using UnityEngine.UI;
+using TMPro;
+using Unity.VisualScripting;
+>>>>>>> Stashed changes
 
 public class HealthSystem : MonoBehaviour
 {
@@ -18,6 +24,11 @@ public class HealthSystem : MonoBehaviour
     public event Action OninvinciblilityEnd;
 
     [SerializeField] public float CurrentHealth { get; private set; }
+<<<<<<< Updated upstream
+=======
+    private int MaxHealth => statHandler.CurrentStat.maxHealth;
+
+>>>>>>> Stashed changes
     public bool IsAttacked { get; private set; }
 
     private int MaxHealth => statHandler.CurrentStat.maxHealth;
@@ -34,7 +45,11 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
         if(true == IsAttacked && timeSinceLastChange < healthChangeDelay)
+=======
+        if (true == IsAttacked && timeSinceLastChange < healthChangeDelay)
+>>>>>>> Stashed changes
         {
             timeSinceLastChange += Time.deltaTime;
 
