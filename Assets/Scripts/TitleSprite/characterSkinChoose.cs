@@ -5,6 +5,7 @@ public class characterSkinChoose : SelectController
     [SerializeField] protected GameObject playerChoose;
     public void PlayerSkinChoiceSet()
     {
+        Debug.Log(player2);
         if (GameManager.Instance.PlayerMode)
         {
             player1.SetActive(false);

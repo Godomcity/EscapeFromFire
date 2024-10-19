@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class FadeController : MonoBehaviour
 {
-    [SerializeField] private GameObject panel;
     Image image;
 
     private void Awake()
     {
-        image = panel.GetComponent<Image>();
+
+        image = gameObject.GetComponent<Image>();
     }
 
     public void FadeIn()

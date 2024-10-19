@@ -8,7 +8,7 @@ public class SelectController : MonoBehaviour
 {
 
      protected GameObject player1;
-     protected GameObject player2;
+     [SerializeField] protected GameObject player2;
      protected GameObject levelButton;
      protected GameObject playerMode;
 
@@ -17,10 +17,10 @@ public class SelectController : MonoBehaviour
     protected string MultiMode = "Now - MultiPlay";
     public void Awake()
     {
-        player1 = GameObject.Find("Player1");
-        player2 = GameObject.Find("Player2");
-        levelButton = GameObject.Find("levelButton");
+        player1 = GameObject.Find("Player1").transform.Find("Sprite").gameObject;
+        levelButton = GameObject.Find("LevelButton");
         playerMode = GameObject.Find("PlayMod");
+
     }
 
 

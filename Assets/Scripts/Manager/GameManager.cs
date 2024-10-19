@@ -14,18 +14,15 @@ public class GameManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Debug.Log("여기야?");
             Destroy(this);
         }
-        else if (Instance = null)
+        else if (Instance == null)
         {
-            Debug.Log("여긴가?");
             Instance = this;
 
             SelectPlayerHandler = GetComponent<SelectPlayerHandler>();
 
             DontDestroyOnLoad(gameObject);
         }
-        Debug.Log(GameManager.Instance);
     }
 }
