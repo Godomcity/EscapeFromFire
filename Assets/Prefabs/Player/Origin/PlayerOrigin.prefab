@@ -279,6 +279,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.5
+  hearts:
+  - {fileID: 3591936471777631914, guid: fa4dd5940c99db847ad9b63236c236a9, type: 3}
+  - {fileID: 7900960169893175137, guid: 95c095f42360b194b8cf7a2b1a1911e8, type: 3}
+  - {fileID: 430210760901329130, guid: b64e9f3eb98d37d4f8956d1b4e081425, type: 3}
+  fullHeart: {fileID: -646594873, guid: a5e645d0b2507ac42807ef8e886f7d45, type: 3}
+  emptyHeart: {fileID: -1095917349, guid: a5e645d0b2507ac42807ef8e886f7d45, type: 3}
 --- !u!114 &7047087580266613413
 MonoBehaviour:
   m_ObjectHideFlags: 0
