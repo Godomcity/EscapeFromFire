@@ -10,9 +10,6 @@ public class SceneController : MonoBehaviour
 
     AudioSource audioSource;
 
-    [SerializeField] AudioClip easyClip;
-    [SerializeField] AudioClip normalClip;
-    [SerializeField] AudioClip hardClip;
     [SerializeField] AudioClip button_Click_Clip;
 
     private void Awake()
@@ -59,15 +56,15 @@ public class SceneController : MonoBehaviour
 
         if(LevelManager.isEasy == true)
         {
-            AudioManager.instance.audioSource.clip = easyClip;
+            AudioManager.instance.audioSource.clip = AudioManager.instance.easyClip;
         }
         else if (LevelManager.isNormal == true)
         {
-            AudioManager.instance.audioSource.clip = normalClip;
+            AudioManager.instance.audioSource.clip = AudioManager.instance.normalClip;
         }
         else
         {
-            AudioManager.instance.audioSource.clip = hardClip;
+            AudioManager.instance.audioSource.clip = AudioManager.instance.hardClip;
         }
 
         AudioManager.instance.audioSource.Play();

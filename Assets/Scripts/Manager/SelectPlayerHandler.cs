@@ -25,7 +25,6 @@ public class SelectPlayerHandler : MonoBehaviour
         playerTypeContainer.Add((PlayerSpawner.PlayerType)playerSpawnIndex);
     }
 
-
     public IReadOnlyList<PlayerSpawner.PlayerType> GetPlayerDataContainer()
     {
         return playerTypeContainer;

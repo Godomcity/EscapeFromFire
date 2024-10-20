@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Security.Cryptography;
+using UnityEngine.UI;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -18,9 +19,12 @@ public class HealthSystem : MonoBehaviour
     public event Action OninvinciblilityEnd;
 
     [SerializeField] public float CurrentHealth { get; private set; }
-    public bool IsAttacked { get; private set; }
-
     private int MaxHealth => statHandler.CurrentStat.maxHealth;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    public bool IsAttacked { get; private set; }
 
     private void Awake()
     {
@@ -34,14 +38,39 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
-        if(true == IsAttacked && timeSinceLastChange < healthChangeDelay)
+        Debug.Log(CurrentHealth);
+        if (true == IsAttacked && timeSinceLastChange < healthChangeDelay)
         {
             timeSinceLastChange += Time.deltaTime;
 
-            if(timeSinceLastChange >= healthChangeDelay )
+            if (timeSinceLastChange >= healthChangeDelay)
             {
                 OninvinciblilityEnd?.Invoke();
                 IsAttacked = false;
+            }
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if(i < CurrentHealth)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if (i < CurrentHealth)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+            if(CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
             }
         }
     }
