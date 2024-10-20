@@ -17,8 +17,11 @@ public class PlayerSpawner : MonoBehaviour
         GameObject player1 = PlayerSpawn((int)(playerTypeContainer[0]));
         player1.GetComponent<InputMapHandler>().SwitchActionMap("Player1");
 
-        GameObject player2 = PlayerSpawn((int)(playerTypeContainer[1]));
-        player2.GetComponent<InputMapHandler>().SwitchActionMap("Player2"); ;
+        if(playerTypeContainer.Count > 1)
+        {
+            GameObject player2 = PlayerSpawn((int)(playerTypeContainer[1]));
+            player2.GetComponent<InputMapHandler>().SwitchActionMap("Player2"); ;
+        }
     }
 
 
