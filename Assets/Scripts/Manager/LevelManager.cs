@@ -75,6 +75,8 @@ public class LevelManager : MonoBehaviour
             if (count == 0)
             {
                 Time.timeScale = 0;
+                AudioManager.instance.audioSource.clip = AudioManager.instance.resultClip;
+                AudioManager.instance.audioSource.Play();
                 Instantiate(resultWindow);
                 count = 1;
             }
