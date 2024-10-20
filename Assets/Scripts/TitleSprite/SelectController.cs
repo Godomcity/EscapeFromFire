@@ -17,7 +17,7 @@ public class SelectController : MonoBehaviour
     protected string MultiMode = "Now - MultiPlay";
     public void Awake()
     {
-        player1 = GameObject.Find("Player1").transform.Find("Sprite").gameObject;
+        player1 = GameObject.Find("Player1");
         levelButton = GameObject.Find("LevelButton");
         playerMode = GameObject.Find("PlayMod");
 

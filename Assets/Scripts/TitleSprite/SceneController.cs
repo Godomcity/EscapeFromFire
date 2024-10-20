@@ -40,6 +40,15 @@ public class SceneController : MonoBehaviour
     public void callTitleScene()
     {
         SceneManager.LoadScene("TitleScene");
+        if (GameManager.Instance.PlayerMode)
+        {
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
+        }else if (!GameManager.Instance.PlayerMode)
+        {
+
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player2ChooseCharacter);
+        }
     }
 
     IEnumerator ButtonSound()

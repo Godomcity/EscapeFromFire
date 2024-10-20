@@ -7,7 +7,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] List<GameObject> playerPrefabs;
 
     public enum PlayerType
-    { BLUE = 1, PINK = 2, GREEN = 3, YELLOW = 4 };
+    { BLUE = 3, PINK = 2, GREEN = 1, YELLOW = 0 };
 
 
     public void PlayerSpawn(int spawnID)
