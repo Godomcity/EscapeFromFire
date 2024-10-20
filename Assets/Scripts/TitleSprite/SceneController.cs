@@ -21,7 +21,6 @@ public class SceneController : MonoBehaviour
     {
         if (!characterSetting())
         {
-            Debug.Log("0000");
             return;
         }
         LevelManager.isEasy = true;
@@ -90,7 +89,6 @@ public class SceneController : MonoBehaviour
         {
             if (GameManager.Instance.player1ChooseCharacter>5)
             {
-                Debug.Log("0001");
                 return false;
             }
         }
@@ -98,7 +96,6 @@ public class SceneController : MonoBehaviour
         {
             if (GameManager.Instance.player1ChooseCharacter>5&&GameManager.Instance.player2ChooseCharacter>5)
             {
-                Debug.Log("0002");
                 return false;
             }
         }
@@ -113,7 +110,6 @@ public class SceneController : MonoBehaviour
             GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player2ChooseCharacter);
         }
         Debug.Log(GameManager.Instance.player1ChooseCharacter);
-        Debug.Log("0004");
         return true;
     }
 }
