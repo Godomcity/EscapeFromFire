@@ -18,6 +18,22 @@ public class ButtonController : MonoBehaviour
 
     public void RetryButton()
     {
+        if (LevelManager.isEasy == true)
+        {
+            AudioManager.instance.audioSource.clip = AudioManager.instance.easyClip;
+            AudioManager.instance.audioSource.Play();
+        }
+        else if (LevelManager.isNormal == true)
+        {
+            AudioManager.instance.audioSource.clip = AudioManager.instance.normalClip;
+            AudioManager.instance.audioSource.Play();
+        }
+        else
+        {
+            AudioManager.instance.audioSource.clip = AudioManager.instance.hardClip;
+            AudioManager.instance.audioSource.Play();
+        }
+
         SceneManager.LoadScene("MainScene", LoadSceneMode.Single);
         Time.timeScale = 1;
     }
