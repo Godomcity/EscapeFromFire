@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectPlayerHandler : MonoBehaviour
 {
-    List<PlayerSpawner.PlayerType> playerTypeContainer;
+    List<PlayerSpawner.PlayerType> playerTypeContainer = new List<PlayerSpawner.PlayerType>();
 
     private int maxDataCount;
 

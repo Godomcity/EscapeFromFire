@@ -771,8 +771,6 @@ MonoBehaviour:
   VirtualGuy: {fileID: 21300000, guid: 5c8b2ada1a819a54e8c051165c738f18, type: 3}
   player1FGimage: {fileID: 1421005287}
   player2FGimage: {fileID: 1479777362}
-  player1ChooseCharacter: 0
-  player2ChooseCharacter: 0
 --- !u!114 &300804041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4127,6 +4125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913879501}
   - component: {fileID: 1913879502}
+  - component: {fileID: 1913879503}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4162,6 +4161,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerMode: 1
+  player1ChooseCharacter: 0
+  player2ChooseCharacter: 0
+--- !u!114 &1913879503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913879499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2042349771fcc0e4589869050dd0ffd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1917104157
 GameObject:
   m_ObjectHideFlags: 0
