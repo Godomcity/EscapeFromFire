@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    [SerializeField] private AudioClip clip;
+    [SerializeField] public AudioClip clip;
 
     public AudioSource audioSource;
 
@@ -14,6 +14,10 @@ public class AudioManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+        else
+        {
+            Destroy(gameObject);
+        }
 
         DontDestroyOnLoad(gameObject);
         audioSource = GetComponent<AudioSource>();
