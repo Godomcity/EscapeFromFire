@@ -7,12 +7,20 @@ using System.Threading.Tasks;
 using UnityEngine.SocialPlatforms.Impl;
 using System.Net.Sockets;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     
     public FadeController fadeController;
+
+    private GameObject player;
+
+    private GameObject TextBackGround;
+
+    [SerializeField] private GameObject resultWindow;
 
     [SerializeField] private GameObject fireBall;
     [SerializeField] private GameObject smallFireBall;
@@ -28,13 +36,16 @@ public class LevelManager : MonoBehaviour
 
     public static bool isEasy = false;
     public static bool isNormal = false;
-    public static bool isHard = true;
+    public static bool isHard = false;
 
     private float first_LevelUp_Time = 15f;
     private float second_LevelUp_Time = 30f;
-    private float time = 0;
+    public float time = 0;
     private float Make5Sec;
     private float MakeMonsterFireBallTimer;
+
+    // 임시 // 결과창이 하나만 나오게 하는 임시 변수.
+    private int count;
 
     private void Awake()
     {
@@ -42,11 +53,14 @@ public class LevelManager : MonoBehaviour
         {
             Instance = this;
         }
+        player = GameObject.FindWithTag("Player");
     }
 
     void Start()
     {
         fadeController.FadeOut();
+
+        // TODO : GameManager로 옮겨야 함(게임 시작.)
         LevelFireSpawn();
     }
 
@@ -54,6 +68,17 @@ public class LevelManager : MonoBehaviour
     {
         time += Time.deltaTime;
         MakeMonsterFireBallTimer += Time.deltaTime;
+
+        // TODO : GameManager로 옮겨야 함(임시 코드 게임 종료.)
+        if (player.GetComponent<HealthSystem>().CurrentHealth == 0)
+        {
+            if (count == 0)
+            {
+                Time.timeScale = 0;
+                Instantiate(resultWindow);
+                count = 1;
+            }
+        }
     }
 
     private void LevelFireSpawn()
