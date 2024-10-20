@@ -19,17 +19,30 @@ public class SceneController : MonoBehaviour
 
     public void callEasyMainScene()
     {
+        if (!characterSetting())
+        {
+            Debug.Log("0000");
+            return;
+        }
         LevelManager.isEasy = true;
         StartCoroutine(ButtonSound());
     }
     public void callNolamlMainScene()
     {
+        if (!characterSetting())
+        {
+            return;
+        }
         LevelManager.isNormal = true;
         StartCoroutine(ButtonSound());
     }
 
     public void callHardMainScene()
     {
+        if (!characterSetting())
+        {
+            return;
+        }
         LevelManager.isHard = true;
         StartCoroutine(ButtonSound());
     }
@@ -59,18 +72,6 @@ public class SceneController : MonoBehaviour
         }
 
         AudioManager.instance.audioSource.Play();
-
-        if (GameManager.Instance.PlayerMode)
-        {
-            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
-        }
-        else if (!GameManager.Instance.PlayerMode)
-        {
-
-            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
-            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player2ChooseCharacter);
-        }
-
         SceneManager.LoadScene("MainScene");
     }
     public void Quit()
@@ -83,5 +84,36 @@ public class SceneController : MonoBehaviour
             Application.Quit();
         #endif
     }
+    private bool characterSetting()
+    {
+        if (GameManager.Instance.PlayerMode)
+        {
+            if (GameManager.Instance.player1ChooseCharacter>5)
+            {
+                Debug.Log("0001");
+                return false;
+            }
+        }
+        else if (!GameManager.Instance.PlayerMode)
+        {
+            if (GameManager.Instance.player1ChooseCharacter>5&&GameManager.Instance.player2ChooseCharacter>5)
+            {
+                Debug.Log("0002");
+                return false;
+            }
+        }
+        if (GameManager.Instance.PlayerMode)
+        {
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
+        }
+        else if (!GameManager.Instance.PlayerMode)
+        {
 
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player2ChooseCharacter);
+        }
+        Debug.Log(GameManager.Instance.player1ChooseCharacter);
+        Debug.Log("0004");
+        return true;
+    }
 }
