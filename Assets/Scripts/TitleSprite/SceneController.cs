@@ -37,6 +37,15 @@ public class SceneController : MonoBehaviour
     public void callTitleScene()
     {
         SceneManager.LoadScene("TitleScene");
+        if (GameManager.Instance.PlayerMode)
+        {
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
+        }else if (!GameManager.Instance.PlayerMode)
+        {
+
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player1ChooseCharacter);
+            GameManager.Instance.SelectPlayerHandler.AddSelectData(GameManager.Instance.player2ChooseCharacter);
+        }
     }
 
     IEnumerator ButtonSound()
@@ -61,4 +70,15 @@ public class SceneController : MonoBehaviour
         AudioManager.instance.audioSource.Play();
         SceneManager.LoadScene("MainScene");
     }
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #elif UNITY_WEBPLAYER
+            Application.OpenURL(https://spartacodingclub.kr/);
+        #else
+            Application.Quit();
+        #endif
+    }
+
 }

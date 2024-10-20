@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public SelectPlayerHandler SelectPlayerHandler { get; private set; }
+    public bool PlayerMode = true;  //true는 싱글, false는 멀티
+    public int player1ChooseCharacter;
+    public int player2ChooseCharacter;
 
     private void Awake()
     {
@@ -15,7 +18,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
-        else if (Instance = null)
+        else if (Instance == null)
         {
             Instance = this;
 
