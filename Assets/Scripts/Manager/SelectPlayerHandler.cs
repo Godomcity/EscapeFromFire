@@ -15,10 +15,6 @@ public class SelectPlayerHandler : MonoBehaviour
 
     public void AddSelectData(int playerSpawnIndex)
     {
-        if ((((int)PlayerSpawner.PlayerType.BLUE) > playerSpawnIndex) &&
-            ((int)PlayerSpawner.PlayerType.YELLOW) < playerSpawnIndex)
-            return;
-
         if (playerTypeContainer.Count > maxDataCount)
             return;
 

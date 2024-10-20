@@ -13,22 +13,20 @@ public class PlayerSpawner : MonoBehaviour
     private void Start()
     {
         IReadOnlyList<PlayerType> playerTypeContainer =  GameManager.Instance.SelectPlayerHandler.GetPlayerDataContainer();
-        Debug.Log(playerTypeContainer.Count);
-        Debug.Log(GameManager.Instance.player1ChooseCharacter);
-        Debug.Log(GameManager.Instance.player2ChooseCharacter);
 
-        for (int i = 0; i < playerTypeContainer.Count; i++)
-        {
-            PlayerSpawn((int)(playerTypeContainer[i]));
-        }
+        GameObject player1 = PlayerSpawn((int)(playerTypeContainer[0]));
+        player1.GetComponent<InputMapHandler>().SwitchActionMap("Player1");
+
+        GameObject player2 = PlayerSpawn((int)(playerTypeContainer[1]));
+        player2.GetComponent<InputMapHandler>().SwitchActionMap("Player2"); ;
     }
 
 
-    public void PlayerSpawn(int spawnID)
+    public GameObject PlayerSpawn(int spawnID)
     {
         PlayerType type = (PlayerType)spawnID;
 
-        Instantiate(playerPrefabs[(int)type]);
+        return Instantiate(playerPrefabs[(int)type]);
     }
 
 }
