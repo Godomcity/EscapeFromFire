@@ -8,7 +8,7 @@ public class SelectController : MonoBehaviour
 {
 
      protected GameObject player1;
-     [SerializeField] protected GameObject player2;
+     protected GameObject player2;
      protected GameObject levelButton;
      protected GameObject playerMode;
 
@@ -18,10 +18,8 @@ public class SelectController : MonoBehaviour
     public void Awake()
     {
         player1 = GameObject.Find("Player1");
+        player2 = GameObject.Find("PlayerDisplay").transform.Find("Player2").gameObject;
         levelButton = GameObject.Find("LevelButton");
         playerMode = GameObject.Find("PlayMod");
-
     }
-
-
 }

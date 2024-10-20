@@ -4161,8 +4161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerMode: 1
-  player1ChooseCharacter: 0
-  player2ChooseCharacter: 0
+  player1ChooseCharacter: 100
+  player2ChooseCharacter: 100
 --- !u!114 &1913879503
 MonoBehaviour:
   m_ObjectHideFlags: 0
