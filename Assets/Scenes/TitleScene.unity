@@ -719,6 +719,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300804039}
+  - component: {fileID: 300804041}
+  - component: {fileID: 300804040}
   m_Layer: 5
   m_Name: PlayerSetting
   m_TagString: Untagged
@@ -749,6 +751,39 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &300804040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300804038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a12ee9428a38034d84fc061b64bfe43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerChoose: {fileID: 1507904912}
+  MaskDudde: {fileID: 21300000, guid: 88794fc5febd16e40a94cacbf542b65b, type: 3}
+  NinjaFrog: {fileID: 21300000, guid: b6d14bcb8d9dbb349beb9d3619096732, type: 3}
+  PinkMan: {fileID: 21300000, guid: 1a6feec238b9a99499082bb755fa32df, type: 3}
+  VirtualGuy: {fileID: 21300000, guid: 5c8b2ada1a819a54e8c051165c738f18, type: 3}
+  player1FGimage: {fileID: 1421005287}
+  player2FGimage: {fileID: 1479777362}
+--- !u!114 &300804041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300804038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec48ad8131437214395067f25c0111ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerModeTxt: {fileID: 153274152}
+  player1Transform: {fileID: 1215720322}
 --- !u!1 &341809770
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +865,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 341809773}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300804040}
+        m_TargetAssemblyTypeName: characterSkinChoose, Assembly-CSharp
+        m_MethodName: PinkManchoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &341809773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,7 +885,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 341809770}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -851,8 +898,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1a6feec238b9a99499082bb755fa32df, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1297,9 +1344,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1918053119}
-        m_TargetAssemblyTypeName: SelectController, Assembly-CSharp
-        m_MethodName: ExitGame
+      - m_Target: {fileID: 1045806976}
+        m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1640,8 +1687,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1918053119}
-        m_TargetAssemblyTypeName: SelectController, Assembly-CSharp
+      - m_Target: {fileID: 300804040}
+        m_TargetAssemblyTypeName: characterSkinChoose, Assembly-CSharp
         m_MethodName: PlayerSkinChoiceSet
         m_Mode: 1
         m_Arguments:
@@ -1717,7 +1764,7 @@ RectTransform:
   m_GameObject: {fileID: 960536303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1918053118}
@@ -1777,7 +1824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bfdc168138e63044ba254aa7da666fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 960536303}
 --- !u!1 &1026221065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,9 +1930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeController: {fileID: 960536307}
-  easyClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
-  normalClip: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
-  hardClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
   button_Click_Clip: {fileID: 8300000, guid: 35cf7766e9e2aa542811e896fde57989, type: 3}
 --- !u!4 &1045806977
 Transform:
@@ -2289,8 +2332,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1918053119}
-        m_TargetAssemblyTypeName: SelectController, Assembly-CSharp
+      - m_Target: {fileID: 300804040}
+        m_TargetAssemblyTypeName: characterSkinChoose, Assembly-CSharp
         m_MethodName: PlayerSkinChoiceSet
         m_Mode: 1
         m_Arguments:
@@ -2337,7 +2380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 330, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1321574941
 MonoBehaviour:
@@ -2382,7 +2425,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1321574942}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300804040}
+        m_TargetAssemblyTypeName: characterSkinChoose, Assembly-CSharp
+        m_MethodName: MaskDudechoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1321574942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2390,7 +2445,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321574939}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -2403,8 +2458,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 88794fc5febd16e40a94cacbf542b65b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2661,7 +2716,7 @@ GameObject:
   - component: {fileID: 1421005288}
   - component: {fileID: 1421005287}
   m_Layer: 5
-  m_Name: SpriteFG
+  m_Name: SpriteFG1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2736,7 +2791,7 @@ GameObject:
   - component: {fileID: 1479777363}
   - component: {fileID: 1479777362}
   m_Layer: 5
-  m_Name: SpriteFG
+  m_Name: SpriteFG2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2950,8 +3005,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1918053119}
-        m_TargetAssemblyTypeName: SelectController, Assembly-CSharp
+      - m_Target: {fileID: 300804041}
+        m_TargetAssemblyTypeName: PlayModeSelectController, Assembly-CSharp
         m_MethodName: playerModeChoiceSet
         m_Mode: 1
         m_Arguments:
@@ -3120,7 +3175,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1516138587}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300804040}
+        m_TargetAssemblyTypeName: characterSkinChoose, Assembly-CSharp
+        m_MethodName: VirtualGuychoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1516138587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3128,7 +3195,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516138584}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3141,8 +3208,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5c8b2ada1a819a54e8c051165c738f18, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3507,7 +3574,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1709078471}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 300804040}
+        m_TargetAssemblyTypeName: characterSkinChoose, Assembly-CSharp
+        m_MethodName: NinJaForgchoose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1709078471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3515,7 +3594,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709078468}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3528,8 +3607,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: b6d14bcb8d9dbb349beb9d3619096732, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3672,7 +3751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1750154720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4044,6 +4123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1913879501}
   - component: {fileID: 1913879502}
+  - component: {fileID: 1913879503}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4076,6 +4156,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adea21a830eba704aa47e3daa069706b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  PlayerMode: 1
+  player1ChooseCharacter: 100
+  player2ChooseCharacter: 100
+--- !u!114 &1913879503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913879499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2042349771fcc0e4589869050dd0ffd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1917104157
@@ -4240,13 +4337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89f6af790754a049991abec872ff367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player1: {fileID: 1215720321}
-  player2: {fileID: 923035748}
-  playerChoose: {fileID: 1507904912}
-  player1Transform: {fileID: 1215720322}
-  playerModeTxt: {fileID: 153274152}
-  levelButton: {fileID: 1164900328}
-  playerMode: {fileID: 1417924777}
 --- !u!1 &1943599534
 GameObject:
   m_ObjectHideFlags: 0
@@ -6739,7 +6829,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -6834,6 +6924,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 0ad591428b0c18c4da51fe3bf98dbc63, type: 3}
+  easyClip: {fileID: 8300000, guid: bef0cef2ded0f0645ad90c6e5bdd4965, type: 3}
+  normalClip: {fileID: 8300000, guid: 51a4f1157b7ff1449b5e5cf064d584c7, type: 3}
+  hardClip: {fileID: 8300000, guid: fc5af015011ea3745b7f78ea1dd1049f, type: 3}
+  resultClip: {fileID: 8300000, guid: d54f7817f4d7df74795de9283b7c9b16, type: 3}
   audioSource: {fileID: 2069745167}
 --- !u!4 &2069745169
 Transform:

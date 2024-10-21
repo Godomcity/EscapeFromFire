@@ -7,6 +7,7 @@ public class CharacterAnimationController : AnimationController
 {
     private static readonly int isWalking = Animator.StringToHash("isWalking");
     private static readonly int isHit = Animator.StringToHash("isHit");
+    private static readonly int isDead = Animator.StringToHash("isDead");
 
     private readonly float magnituteThreshold = 0.5f;
 
@@ -25,6 +26,12 @@ public class CharacterAnimationController : AnimationController
         controller.OnMoveEvent += Move;
         healthSystem.OnDamage += Hit;
         healthSystem.OninvinciblilityEnd += InvincilbilityEnd;
+        healthSystem.OnDeath += Die;
+    }
+
+    private void Die()
+    {
+        animator.SetTrigger(isDead);
     }
 
     private void Hit()

@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1899356184670174427}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 95932cf13b1a91b4c8d0845d298aceb3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4fd8afe27ca569941a9785ba8a90141d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 1232678700645186510}
   - component: {fileID: 8557678750187730546}
   - component: {fileID: 8417079226365469837}
+  - component: {fileID: -7508260867347609324}
   m_Layer: 6
   m_Name: PlayerOrigin
   m_TagString: Player
@@ -279,10 +280,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthChangeDelay: 0.5
-<<<<<<< Updated upstream
-=======
-  numOfHeartTxt: {fileID: 7931589706694923059, guid: d43d86e3d4700af46a598754a9f49b1c, type: 3}
->>>>>>> Stashed changes
+  hearts:
+  - {fileID: 3591936471777631914, guid: fa4dd5940c99db847ad9b63236c236a9, type: 3}
+  - {fileID: 7900960169893175137, guid: 95c095f42360b194b8cf7a2b1a1911e8, type: 3}
+  - {fileID: 430210760901329130, guid: b64e9f3eb98d37d4f8956d1b4e081425, type: 3}
+  fullHeart: {fileID: -646594873, guid: a5e645d0b2507ac42807ef8e886f7d45, type: 3}
+  emptyHeart: {fileID: -1095917349, guid: a5e645d0b2507ac42807ef8e886f7d45, type: 3}
 --- !u!114 &7047087580266613413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -481,3 +484,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0.006807983, y: 0.40695694}
   m_Size: {x: 0.7042407, y: 0.71406287}
   m_Direction: 0
+--- !u!114 &-7508260867347609324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3331206790436552643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04aa0fcd267be674e967f20cbd15a708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Security.Cryptography;
-<<<<<<< Updated upstream
-=======
 using UnityEngine.UI;
-using TMPro;
-using Unity.VisualScripting;
->>>>>>> Stashed changes
 
 public class HealthSystem : MonoBehaviour
 {
@@ -24,14 +19,12 @@ public class HealthSystem : MonoBehaviour
     public event Action OninvinciblilityEnd;
 
     [SerializeField] public float CurrentHealth { get; private set; }
-<<<<<<< Updated upstream
-=======
     private int MaxHealth => statHandler.CurrentStat.maxHealth;
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
->>>>>>> Stashed changes
     public bool IsAttacked { get; private set; }
-
-    private int MaxHealth => statHandler.CurrentStat.maxHealth;
 
     private void Awake()
     {
@@ -45,18 +38,39 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< Updated upstream
-        if(true == IsAttacked && timeSinceLastChange < healthChangeDelay)
-=======
+        Debug.Log(CurrentHealth);
         if (true == IsAttacked && timeSinceLastChange < healthChangeDelay)
->>>>>>> Stashed changes
         {
             timeSinceLastChange += Time.deltaTime;
 
-            if(timeSinceLastChange >= healthChangeDelay )
+            if (timeSinceLastChange >= healthChangeDelay)
             {
                 OninvinciblilityEnd?.Invoke();
                 IsAttacked = false;
+            }
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if(i < CurrentHealth)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if (i < CurrentHealth)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+            if(CurrentHealth > MaxHealth)
+            {
+                CurrentHealth = MaxHealth;
             }
         }
     }

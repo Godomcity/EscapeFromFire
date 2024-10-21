@@ -28,7 +28,7 @@ public abstract class Balls : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {          
             animator.SetBool("isDestroy", true);
-            Destroy(this.gameObject, 1f);
+            Destroy(this.gameObject, 0.4f);
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             rgbd.constraints = RigidbodyConstraints2D.FreezePositionY;
             OnTriggerEffect(collision);
@@ -40,7 +40,7 @@ public abstract class Balls : MonoBehaviour
             audioSource.clip = playerHitClip;
             audioSource.Play();
             animator.SetBool("isDestroy", true);
-            Destroy(this.gameObject, 1f);
+            Destroy(this.gameObject, 0.4f);
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             rgbd.constraints = RigidbodyConstraints2D.FreezePositionY;
             collision.gameObject.GetComponent<HealthSystem>().ChangeHealth(-1);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectPlayerHandler : MonoBehaviour
 {
-    List<PlayerSpawner.PlayerType> playerTypeContainer;
+    List<PlayerSpawner.PlayerType> playerTypeContainer = new List<PlayerSpawner.PlayerType>();
 
     private int maxDataCount;
 
@@ -15,19 +15,19 @@ public class SelectPlayerHandler : MonoBehaviour
 
     public void AddSelectData(int playerSpawnIndex)
     {
-        if ((((int)PlayerSpawner.PlayerType.BLUE) > playerSpawnIndex) &&
-            ((int)PlayerSpawner.PlayerType.YELLOW) < playerSpawnIndex)
-            return;
-
         if (playerTypeContainer.Count > maxDataCount)
             return;
 
         playerTypeContainer.Add((PlayerSpawner.PlayerType)playerSpawnIndex);
     }
 
-
     public IReadOnlyList<PlayerSpawner.PlayerType> GetPlayerDataContainer()
     {
         return playerTypeContainer;
+    }
+
+    public void DeleteSelectData()
+    {
+        playerTypeContainer.Clear();
     }
 }

@@ -83,7 +83,6 @@ public class SideViewMovement : MonoBehaviour
 
         movementRigidbody2D.AddForce(Vector2.up * statHandler.CurrentStat.jumpPower, ForceMode2D.Impulse);
 
-        Debug.Log(movementRigidbody2D.velocity);
     }
     private void DoubleJump()
     {
@@ -94,7 +93,8 @@ public class SideViewMovement : MonoBehaviour
 
         movementRigidbody2D.AddForce(Vector2.up * (statHandler.CurrentStat.jumpPower * 0.8f), ForceMode2D.Impulse);
 
-        Debug.Log(movementRigidbody2D.velocity);
+        audioSource.PlayOneShot(jumpClip);
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -106,7 +106,6 @@ public class SideViewMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-            isGround = false;
+        isGround = false;
     }
 }

@@ -4,17 +4,43 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
+    GameManager gameManager;
     [SerializeField] List<GameObject> playerPrefabs;
 
     public enum PlayerType
-    { BLUE = 1, PINK = 2, GREEN = 3, YELLOW = 4 };
+    { BLUE = 3, PINK = 2, GREEN = 1, YELLOW = 0 };
 
 
-    public void PlayerSpawn(int spawnID)
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+
+        IReadOnlyList<PlayerType> playerTypeContainer = GameManager.Instance.SelectPlayerHandler.GetPlayerDataContainer();
+
+        GameObject player1 = PlayerSpawn((int)(playerTypeContainer[0]));
+        player1.GetComponent<InputMapHandler>().SwitchActionMap("Player1");
+        gameManager.player1 = player1;
+
+        if (playerTypeContainer.Count > 1)
+        {
+            GameObject player2 = PlayerSpawn((int)(playerTypeContainer[1]));
+            player2.GetComponent<InputMapHandler>().SwitchActionMap("Player2");
+            gameManager.player2 = player2;
+        }
+    }
+
+    private void Start()
+    {
+       
+       
+    }
+
+
+    public GameObject PlayerSpawn(int spawnID)
     {
         PlayerType type = (PlayerType)spawnID;
 
-        Instantiate(playerPrefabs[(int)type]);
+        return Instantiate(playerPrefabs[(int)type]);
     }
 
 }
