@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 
 public class characterSkinChoose : SelectController
 {
+    AudioSource audioSource;
     [SerializeField] protected GameObject playerChoose;
     GameObject whoPlayerChooseMode;
     [SerializeField] private Sprite MaskDudde;
@@ -15,6 +16,8 @@ public class characterSkinChoose : SelectController
     [SerializeField] private Image player2FGimage;
     public void PlayerSkinChoiceSet()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
         whoPlayerChooseMode = EventSystem.current.currentSelectedGameObject;
         if (GameManager.Instance.PlayerMode)
         {
@@ -34,6 +37,8 @@ public class characterSkinChoose : SelectController
     }
     public void MaskDudechoose()
     {
+        audioSource.GetComponent<AudioSource>();
+        audioSource.Play();
         if (whoPlayerChooseMode.name == "Player1")
         {
             player1FGimage.sprite = MaskDudde;
@@ -50,6 +55,7 @@ public class characterSkinChoose : SelectController
     }
     public void NinJaForgchoose()
     {
+        audioSource.GetComponent<AudioSource>().Play();
         if (whoPlayerChooseMode.name == "Player1")
         {
             player1FGimage.sprite = NinjaFrog;
@@ -66,6 +72,7 @@ public class characterSkinChoose : SelectController
     }
     public void PinkManchoose()
     {
+        audioSource.GetComponent<AudioSource>().Play();
         if (whoPlayerChooseMode.name == "Player1")
         {
             player1FGimage.sprite = PinkMan;
@@ -82,6 +89,7 @@ public class characterSkinChoose : SelectController
     }
     public void VirtualGuychoose()
     {
+        audioSource.GetComponent<AudioSource>().Play();
         if (whoPlayerChooseMode.name == "Player1")
         {
             player1FGimage.sprite = VirtualGuy;
@@ -99,6 +107,7 @@ public class characterSkinChoose : SelectController
 
     public void ObjectSetAcitveTrue()
     {
+        audioSource.GetComponent<AudioSource>().Play();
         if (GameManager.Instance.PlayerMode)
         {
             player1.SetActive(true);
