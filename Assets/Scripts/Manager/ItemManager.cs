@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] ItemProbability[] itemList;
+    [SerializeField] private float itemSpawnDelay = 3.0f;
 
 
     [System.Serializable]
@@ -14,7 +15,6 @@ public class ItemManager : MonoBehaviour
         [Range(0f, 1f)] public float itemPercent;
     }
 
-    private float itemSpawnDelay = 3.0f;
 
     // Start is called before the first frame update
     void Start()
