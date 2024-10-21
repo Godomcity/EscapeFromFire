@@ -25,4 +25,9 @@ public class SelectPlayerHandler : MonoBehaviour
     {
         return playerTypeContainer;
     }
+
+    public void DeleteSelectData()
+    {
+        playerTypeContainer.Clear();
+    }
 }

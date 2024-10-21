@@ -20,7 +20,7 @@ public class ScoreHandler : MonoBehaviour
         score += Time.deltaTime * scoreMultiplier;
         scoreMultiplier += Time.deltaTime;
 
-        //GameManager.Instance.SetScore(score);
+        GameManager.Instance.SetScore(score);
 
         scoreText.text = ((int)score).ToString();
     }

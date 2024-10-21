@@ -763,7 +763,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a12ee9428a38034d84fc061b64bfe43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player2: {fileID: 923035748}
   playerChoose: {fileID: 1507904912}
   MaskDudde: {fileID: 21300000, guid: 88794fc5febd16e40a94cacbf542b65b, type: 3}
   NinjaFrog: {fileID: 21300000, guid: b6d14bcb8d9dbb349beb9d3619096732, type: 3}
@@ -783,7 +782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec48ad8131437214395067f25c0111ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player2: {fileID: 923035748}
   playerModeTxt: {fileID: 153274152}
   player1Transform: {fileID: 1215720322}
 --- !u!1 &341809770
@@ -4160,6 +4158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adea21a830eba704aa47e3daa069706b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1: {fileID: 0}
+  player2: {fileID: 0}
   PlayerMode: 1
   player1ChooseCharacter: 100
   player2ChooseCharacter: 100
@@ -4337,7 +4337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b89f6af790754a049991abec872ff367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player2: {fileID: 923035748}
 --- !u!1 &1943599534
 GameObject:
   m_ObjectHideFlags: 0
