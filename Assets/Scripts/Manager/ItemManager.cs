@@ -1,11 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ItemManager : MonoBehaviour
 {
     [SerializeField] ItemProbability[] itemList;
-
+    [SerializeField] public AudioClip healClip;
+    [SerializeField] public AudioClip speedUpClip;
+    [SerializeField] public AudioClip fireSlowDownClip;
+    public AudioSource audioSource;
 
     [System.Serializable]
     public struct ItemProbability
@@ -85,6 +91,18 @@ public class ItemManager : MonoBehaviour
 
     public void UseItem(Item item, GameObject player)
     {
+        if (item.name == "HealItem(Clone)")
+        {
+            audioSource.PlayOneShot(healClip);
+        }
+        else if(item.name == "FastSpeedItem(Clone)")
+        {
+            audioSource.PlayOneShot(speedUpClip);
+        }
+        else
+        {
+            audioSource.PlayOneShot(fireSlowDownClip);
+        }
         // 아이템이 반환한 코루틴을 실행
         StartCoroutine(item.ItemEffect(player));
     }
