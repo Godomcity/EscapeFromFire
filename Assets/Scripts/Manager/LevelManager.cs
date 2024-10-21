@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private GameObject TextBackGround;
 
-    [SerializeField] private GameObject resultWindow;
+    [SerializeField] public GameObject resultWindow;
 
     [SerializeField] private GameObject fireBall;
     [SerializeField] private GameObject smallFireBall;
@@ -53,14 +53,13 @@ public class LevelManager : MonoBehaviour
         {
             Instance = this;
         }
-        player = GameObject.FindWithTag("Player");
+        //player = GameObject.FindWithTag("Player");
     }
 
     void Start()
     {
         fadeController.FadeOut();
 
-        // TODO : GameManager로 옮겨야 함(게임 시작.)
         LevelFireSpawn();
     }
 
@@ -70,17 +69,17 @@ public class LevelManager : MonoBehaviour
         MakeMonsterFireBallTimer += Time.deltaTime;
 
         // TODO : GameManager로 옮겨야 함(임시 코드 게임 종료.)
-        if (player.GetComponent<HealthSystem>().CurrentHealth == 0)
-        {
-            if (count == 0)
-            {
-                Time.timeScale = 0;
-                AudioManager.instance.audioSource.clip = AudioManager.instance.resultClip;
-                AudioManager.instance.audioSource.Play();
-                Instantiate(resultWindow);
-                count = 1;
-            }
-        }
+        //if (player.GetComponent<HealthSystem>().CurrentHealth == 0)
+        //{
+        //    if (count == 0)
+        //    {
+        //        Time.timeScale = 0;
+        //        AudioManager.instance.audioSource.clip = AudioManager.instance.resultClip;
+        //        AudioManager.instance.audioSource.Play();
+        //        Instantiate(resultWindow);
+        //        count = 1;
+        //    }
+        //}
     }
 
     private void LevelFireSpawn()

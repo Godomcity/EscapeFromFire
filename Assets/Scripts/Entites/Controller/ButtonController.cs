@@ -11,6 +11,7 @@ public class ButtonController : MonoBehaviour
         LevelManager.isNormal = false;
         LevelManager.isHard = false;
         AudioManager.instance.audioSource.clip = AudioManager.instance.clip;
+        GameManager.Instance.SelectPlayerHandler.DeleteSelectData();
         SceneManager.LoadScene("TitleScene", LoadSceneMode.Single);
         AudioManager.instance.audioSource.Play();
         Time.timeScale = 1;
