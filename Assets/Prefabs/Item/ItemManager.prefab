@@ -51,3 +51,7 @@ MonoBehaviour:
     itemPercent: 0.08434039
   - item: {fileID: 7090960006523054240, guid: 9021d185fd2c8214791e1b3877cf6740, type: 3}
     itemPercent: 0.8383624
+  itemSpawnDelay: 3
+  healClip: {fileID: 8300000, guid: cfce0cea076109f478783201b2a9f57f, type: 3}
+  speedUpClip: {fileID: 8300000, guid: 6cf9c85b5a3b88c468b21b9d21250adf, type: 3}
+  fireSlowDownClip: {fileID: 8300000, guid: acbcb75601b0082458fda8807f67c813, type: 3}

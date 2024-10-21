@@ -7,6 +7,10 @@ public class ItemManager : MonoBehaviour
     [SerializeField] ItemProbability[] itemList;
     [SerializeField] private float itemSpawnDelay = 3.0f;
 
+    [SerializeField] private AudioClip healClip;
+    [SerializeField] private AudioClip speedUpClip;
+    [SerializeField] private AudioClip fireSlowDownClip;
+    AudioSource audioSource;
 
     [System.Serializable]
     public struct ItemProbability
@@ -85,6 +89,19 @@ public class ItemManager : MonoBehaviour
 
     public void UseItem(Item item, GameObject player)
     {
+        if (item.name == "HealItem(Clone)")
+        {
+            audioSource.PlayOneShot(healClip);
+        }
+        else if (item.name == "FastSpeedItem(Clone)")
+        {
+            audioSource.PlayOneShot(speedUpClip);
+        }
+        else
+        {
+            audioSource.PlayOneShot(fireSlowDownClip);
+        }
+
         // 아이템이 반환한 코루틴을 실행
         StartCoroutine(item.ItemEffect(player));
     }
