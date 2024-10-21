@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [SerializeField] ItemProbability[] itemPercentage;
+    [SerializeField] ItemProbability[] itemList;
 
 
     [System.Serializable]
@@ -27,7 +27,7 @@ public class ItemManager : MonoBehaviour
     {
         float totalPercentage = 0f;
 
-        foreach (var item in itemPercentage)
+        foreach (var item in itemList)
         {
             //totalPercentage += itemPercent;
             totalPercentage += item.itemPercent;
@@ -35,19 +35,12 @@ public class ItemManager : MonoBehaviour
 
         if (totalPercentage != 1.0f)
         {
-            for (int i = 0; i < itemPercentage.Length; i++)
+            for (int i = 0; i < itemList.Length; i++)
             {
-                itemPercentage[i].itemPercent *= (1 / totalPercentage);
+                itemList[i].itemPercent *= (1 / totalPercentage);
             }
         }
 
-        /*if (totalPercentage < 1.0f)
-        {
-            for (int i = 0; i < itemPercentage.Length; i++)
-            {
-                itemPercentage[i].itemPercent *= (1 / totalPercentage);
-            }
-        }*/
     }
 
     IEnumerator SpawnItem()
@@ -55,6 +48,12 @@ public class ItemManager : MonoBehaviour
         while (true)
         {
             GameObject spawnItem = GetRandomItemBasedOnProbability();
+
+            if (spawnItem == null)
+            {
+                yield return new WaitForSeconds(itemSpawnDelay);
+                continue;
+            }
 
             Vector3 spawnPosition = new Vector3(Random.Range(-8.5f, 8.5f), 5.6f, 0);
             Quaternion spawnRotation = Quaternion.identity;
@@ -71,7 +70,7 @@ public class ItemManager : MonoBehaviour
         float randomValue = Random.Range(0f, 1f);
         float cumulativeProbability = 0f;
 
-        foreach (var item in itemPercentage)
+        foreach (var item in itemList)
         {
             cumulativeProbability += item.itemPercent;
 

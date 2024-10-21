@@ -7,6 +7,8 @@ public abstract class Item : MonoBehaviour
     [SerializeField] private ItemManager itemManager;
     private GameObject useItemPlayer;
 
+    bool IsUsed = false;
+
     private void Start()
     {
         itemManager = FindObjectOfType<ItemManager>();
@@ -29,6 +31,13 @@ public abstract class Item : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            if (IsUsed)
+            {
+                return;
+            }
+
+            IsUsed = true;
+
             useItemPlayer = collision.gameObject;
 
             if (collision == null)

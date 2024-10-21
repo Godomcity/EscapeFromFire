@@ -6,7 +6,7 @@ public class FastSpeedItem : Item
 {
     //[SerializeField] private ItemEffect item
 
-    private float speedMulti = 1.7f;
+    private float speedMulti = 1.45f;
     private float fastSpeedDuration = 5.0f;
     // ItemEffect에서 코루틴을 반환
     public override IEnumerator ItemEffect(GameObject player)
