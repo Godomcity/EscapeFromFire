@@ -34,7 +34,7 @@ public class CharacterAnimationController : AnimationController
         animator.SetTrigger(isDead);
     }
 
-    private void Hit()
+    private void Hit(float health)
     {
         animator.SetBool(isHit, true);
     }
