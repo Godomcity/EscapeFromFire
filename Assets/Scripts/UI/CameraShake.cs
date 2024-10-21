@@ -17,7 +17,7 @@ public class CameraShake : MonoBehaviour
         healthSystem.OnDamage += CameraShakeOn;    
     }
 
-    private void CameraShakeOn()
+    private void CameraShakeOn(float health)
     {
         StartCoroutine(Shake(0.5f));
     }

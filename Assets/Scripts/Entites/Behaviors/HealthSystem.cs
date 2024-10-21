@@ -13,13 +13,14 @@ public class HealthSystem : MonoBehaviour
 
     private CharacterStatsHandler statHandler;
     
-    public event Action OnDamage;
+    public event Action <float> OnDamage;
     public event Action OnHeal;
     public event Action OnDeath;
     public event Action OninvinciblilityEnd;
 
     [SerializeField] public float CurrentHealth { get; private set; }
     private int MaxHealth => statHandler.CurrentStat.maxHealth;
+
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -38,7 +39,6 @@ public class HealthSystem : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(CurrentHealth);
         if (true == IsAttacked && timeSinceLastChange < healthChangeDelay)
         {
             timeSinceLastChange += Time.deltaTime;
@@ -59,14 +59,6 @@ public class HealthSystem : MonoBehaviour
             else
             {
                 hearts[i].sprite = emptyHeart;
-            }
-            if (i < CurrentHealth)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
             }
             if(CurrentHealth > MaxHealth)
             {
@@ -93,7 +85,7 @@ public class HealthSystem : MonoBehaviour
         CurrentHealth += change;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
 
-        OnDamage?.Invoke();
+        OnDamage?.Invoke(CurrentHealth);
         IsAttacked = true;
 
         timeSinceLastChange = 0f;
