@@ -14,16 +14,12 @@ public class HealthSystem : MonoBehaviour
     private CharacterStatsHandler statHandler;
     
     public event Action <float> OnDamage;
-    public event Action OnHeal;
+    public event Action <float> OnHeal;
     public event Action OnDeath;
     public event Action OninvinciblilityEnd;
 
     [SerializeField] public float CurrentHealth { get; private set; }
-    private int MaxHealth => statHandler.CurrentStat.maxHealth;
-
-    public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
+    private int MaxHealth  => statHandler.CurrentStat.maxHealth;
 
     public bool IsAttacked { get; private set; }
 
@@ -49,22 +45,6 @@ public class HealthSystem : MonoBehaviour
                 IsAttacked = false;
             }
         }
-
-        for (int i = 0; i < hearts.Length; i++)
-        {
-            if(i < CurrentHealth)
-            {
-                hearts[i].sprite = fullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = emptyHeart;
-            }
-            if(CurrentHealth > MaxHealth)
-            {
-                CurrentHealth = MaxHealth;
-            }
-        }
     }
 
 
@@ -74,7 +54,7 @@ public class HealthSystem : MonoBehaviour
         {
             CurrentHealth += change;
             CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-            OnHeal?.Invoke();
+            OnHeal?.Invoke(CurrentHealth);
 
             return true;
         }

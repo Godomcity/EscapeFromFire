@@ -10,7 +10,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] private AudioClip healClip;
     [SerializeField] private AudioClip speedUpClip;
     [SerializeField] private AudioClip fireSlowDownClip;
-    AudioSource audioSource;
+    [SerializeField] AudioSource audioSource;
 
     [System.Serializable]
     public struct ItemProbability

@@ -6,9 +6,9 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SelectController : MonoBehaviour
 {
-
-     protected GameObject player1;
-     protected GameObject player2;
+     
+     public GameObject player1;
+     public GameObject player2;
      protected GameObject levelButton;
      protected GameObject playerMode;
 
