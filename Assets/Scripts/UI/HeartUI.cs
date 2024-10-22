@@ -29,11 +29,11 @@ public class HeartUI : MonoBehaviour
     public void ChangeHeart(float CurrentHealth)
     {
         int idx = (int)CurrentHealth;
-    
-        for (int i = 0;i < idx; i++)
+
+        for (int i = 0; i < idx; i++)
         {
             hearts[i].sprite = fullHeart;
             hearts[idx].sprite = emptyHeart;
-        }        
+        }                   
     }
 }

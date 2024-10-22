@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerSpawner : MonoBehaviour
 {
@@ -25,12 +26,14 @@ public class PlayerSpawner : MonoBehaviour
         //player1.GetComponent 여기서 헬스시스템에 접근하여 이벤트 등록
         player1.GetComponent<HealthSystem>().OnDamage += heartUI1.ChangeHeart;
         player1.GetComponent<HealthSystem>().OnHeal += heartUI1.ChangeHeart;
+        heartUI2.gameObject.SetActive(false);
         //이벤트 등록 OnDamage 이벤트 옮기기
         player1.GetComponent<InputMapHandler>().SwitchActionMap("Player1");
         gameManager.player1 = player1;
 
         if (playerTypeContainer.Count > 1)
         {
+            heartUI2.gameObject.SetActive(true);
             GameObject player2 = PlayerSpawn((int)(playerTypeContainer[1]));
             player2.GetComponent<InputMapHandler>().SwitchActionMap("Player2");
             player2.GetComponent<HealthSystem>().OnDamage += heartUI2.ChangeHeart;
@@ -38,13 +41,6 @@ public class PlayerSpawner : MonoBehaviour
             gameManager.player2 = player2;
         }
     }
-
-    private void Start()
-    {
-       
-       
-    }
-
 
     public GameObject PlayerSpawn(int spawnID)
     {

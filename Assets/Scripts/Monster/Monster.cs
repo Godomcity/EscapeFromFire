@@ -18,7 +18,7 @@ public class Monster : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         animator = GetComponent<Animator>();
         collider = GetComponentInChildren<Collider2D>();
-        Invoke("RandomMove", 3);
+        Invoke("RandomMove", 1);
     }
 
     //몬스터 움직임
