@@ -15,9 +15,9 @@ public class Monster : MonoBehaviour
     private void Awake()
     {
         rgbd = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        collider = GetComponentInChildren<Collider2D>();
+        collider = GetComponent<Collider2D>();
         Invoke("RandomMove", 1);
     }
 

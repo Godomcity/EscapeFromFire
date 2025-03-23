@@ -8,11 +8,8 @@ public class HeartUI : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
-    HealthSystem healthSystem;
     Image image;
-    SelectController selectController;
     GameManager gameManager;
-    IReadOnlyList<PlayerType> playerTypeContainer = GameManager.Instance.SelectPlayerHandler.GetPlayerDataContainer();
 
     private void Awake()
     {
@@ -29,11 +26,11 @@ public class HeartUI : MonoBehaviour
     public void ChangeHeart(float CurrentHealth)
     {
         int idx = (int)CurrentHealth;
-
         for (int i = 0; i < idx; i++)
         {
             hearts[i].sprite = fullHeart;
-            hearts[idx].sprite = emptyHeart;
-        }                   
+        }
+
+        hearts[idx].sprite = emptyHeart;
     }
 }
